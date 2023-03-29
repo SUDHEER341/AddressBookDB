@@ -1,0 +1,334 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 45
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addressbook1       |
+| information_schema |
+| mysql              |
+| payrollservice     |
+| performance_schema |
+| rfp255             |
+| sakila             |
+| sys                |
+| test               |
+| world              |
++--------------------+
+10 rows in set (0.06 sec)
+
+mysql> CREATE DATABASE AddressBookService;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addressbook1       |
+| addressbookservice |
+| information_schema |
+| mysql              |
+| payrollservice     |
+| performance_schema |
+| rfp255             |
+| sakila             |
+| sys                |
+| test               |
+| world              |
++--------------------+
+11 rows in set (0.01 sec)
+
+mysql> use addressbookservice;
+Database changed
+mysql> create table addressbook(
+    ->  first_name varchar(25),
+    ->
+    -> last_name varchar(25),
+    -> address varchar(50),
+    ->  city int(15),
+    -> state varchar(20),
+    -> zip int(10),
+    -> phone_number int(15),
+    -> email varchar(50));
+Query OK, 0 rows affected, 3 warnings (0.19 sec)
+
+mysql> describe addressbook;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| first_name   | varchar(25) | YES  |     | NULL    |       |
+| last_name    | varchar(25) | YES  |     | NULL    |       |
+| address      | varchar(50) | YES  |     | NULL    |       |
+| city         | int         | YES  |     | NULL    |       |
+| state        | varchar(20) | YES  |     | NULL    |       |
+| zip          | int         | YES  |     | NULL    |       |
+| phone_number | int         | YES  |     | NULL    |       |
+| email        | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+mysql> insert into addressbook (first_name,last_name,address,city,state,zip,phone_number,email) VALUES ('ram','nunna','hyderabad','Bhimavaram','ANDHRAPRADESH',534568,1234567890,'abc123@gmail.com');
+ERROR 1366 (HY000): Incorrect integer value: 'Bhimavaram' for column 'city' at row 1
+mysql> insert into addressbook (first_name,last_name,address,city,state,zip,phone_number,email) VALUES ('ram','nunna','hyderabad','2','ANDHRAPRADESH',534568,1234567890,'abc123@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from addressbook;
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address   | city | state         | zip    | phone_number | email            |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> update addressbook set zip=534134 where first_name='ram';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address   | city | state         | zip    | phone_number | email            |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad |    2 | ANDHRAPRADESH | 534134 |   1234567890 | abc123@gmail.com |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> Enter password: *********
+    -> Welcome to the MySQL monitor.  Commands end with ; or \g.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Enter password: *********
+Welcome to the MySQL monitor.  Commands end with' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'or' at line 1
+    -> Your MySQL connection id is 45
+    -> Server version: 8.0.32 MySQL Community Server - GPL
+    ->
+    -> Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+    ->
+    -> Oracle is a registered trademark of Oracle Corporation and/or its
+    -> affiliates. Other names may be trademarks of their respective
+    -> owners.
+    ->
+    -> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    ->
+    -> mysql> show databases
+    ->     -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.
+Your MySQL connection id is 45
+Server version: 8.0.32 MySQL Community Server -' at line 1
+mysql> ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1064 (42000): You have an error in your SQL syntax' at line 1
+    -> mysql> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the manual that corresponds to your MySQL server version for the right syntax to' at line 1
+mysql> +--------------------+
+    -> | Database           |
+    -> +--------------------+
+    -> | addressbook1       |
+    -> | information_schema |
+    -> | mysql              |
+    -> | payrollservice     |
+    -> | performance_schema |
+    -> | rfp255             |
+    -> | sakila             |
+    -> | sys                |
+    -> | test               |
+    -> | world              |
+    -> +--------------------+
+    -> 10 rows in set (0.06 sec)
+    ->
+    -> mysql> CREATE DATABASE AddressBookService;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+--------------------+
+| Database           |
++--------------------+
+| addressbo' at line 1
+mysql> Query OK, 1 row affected (0.05 sec)
+    ->
+    -> mysql> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.05 sec)
+
+mysql> show databases' at line 1
+mysql> +--------------------+
+    -> | Database           |
+    -> +--------------------+
+    -> | addressbook1       |
+    -> | addressbookservice |
+    -> | information_schema |
+    -> | mysql              |
+    -> | payrollservice     |
+    -> | performance_schema |
+    -> | rfp255             |
+    -> | sakila             |
+    -> | sys                |
+    -> | test               |
+    -> | world              |
+    -> +--------------------+
+    -> 11 rows in set (0.01 sec)
+    ->
+    -> mysql> use addressbookservice;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+--------------------+
+| Database           |
++--------------------+
+| addressbo' at line 1
+mysql> Database changed
+    -> mysql> create table addressbook(
+    ->     ->  first_name varchar(25),
+    ->     ->
+    ->     -> last_name varchar(25),
+    ->     -> address varchar(50),
+    ->     ->  city int(15),
+    ->     -> state varchar(20),
+    ->     -> zip int(10),
+    ->     -> phone_number int(15),
+    ->     -> email varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Database changed
+mysql> create table addressbook(
+    ->  first_name varchar(25)' at line 1
+mysql> Query OK, 0 rows affected, 3 warnings (0.19 sec)
+    ->
+    -> mysql> describe addressbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected, 3 warnings (0.19 sec)
+
+mysql> describe addressbook' at line 1
+mysql> +--------------+-------------+------+-----+---------+-------+
+    -> | Field        | Type        | Null | Key | Default | Extra |
+    -> +--------------+-------------+------+-----+---------+-------+
+    -> | first_name   | varchar(25) | YES  |     | NULL    |       |
+    -> | last_name    | varchar(25) | YES  |     | NULL    |       |
+    -> | address      | varchar(50) | YES  |     | NULL    |       |
+    -> | city         | int         | YES  |     | NULL    |       |
+    -> | state        | varchar(20) | YES  |     | NULL    |       |
+    -> | zip          | int         | YES  |     | NULL    |       |
+    -> | phone_number | int         | YES  |     | NULL    |       |
+    -> | email        | varchar(50) | YES  |     | NULL    |       |
+    -> +--------------+-------------+------+-----+---------+-------+
+    -> 8 rows in set (0.02 sec)
+    ->
+    -> mysql> insert into addressbook (first_name,last_name,address,city,state,zip,phone_number,email) VALUES ('ram','nunna','hyderabad','Bhimavaram','ANDHRAPRADESH',534568,1234567890,'abc123@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+--------------+-------------+------+-----+---------+-------+
+| Field        | T' at line 1
+mysql> ERROR 1366 (HY000): Incorrect integer value: 'Bhimavaram' for column 'city' at row 1
+    -> mysql> insert into addressbook (first_name,last_name,address,city,state,zip,phone_number,email) VALUES ('ram','nunna','hyderabad','2','ANDHRAPRADESH',534568,1234567890,'abc123@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1366 (HY000): Incorrect integer value: 'Bhimavaram' for column 'city' at r' at line 1
+mysql> Query OK, 1 row affected (0.01 sec)
+    ->
+    -> mysql> select * from addressbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from addressbook' at line 1
+mysql> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> | first_name | last_name | address   | city | state         | zip    | phone_number | email            |
+    -> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> | ram        | nunna     | hyderabad |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
+    -> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> 1 row in set (0.00 sec)
+    ->
+    -> mysql> update addressbook set zip=534134 where first_name='ram';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+------------+-----------+-----------+------+---------------+--------+----------' at line 1
+mysql> Query OK, 1 row affected (0.01 sec)
+    -> Rows matched: 1  Changed: 1  Warnings: 0
+    ->
+    -> mysql> select * from addressbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+my' at line 1
+mysql> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> | first_name | last_name | address   | city | state         | zip    | phone_number | email            |
+    -> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> | ram        | nunna     | hyderabad |    2 | ANDHRAPRADESH | 534134 |   1234567890 | abc123@gmail.com |
+    -> +------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+    -> 1 row in set (0.00 sec)
+    ->
+    -> update addressbook set last_name='shyam' where first_name='ram';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+------------+-----------+-----------+------+---------------+--------+----------' at line 1
+mysql> select * from addressbook;
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email            |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad    |    2 | ANDHRAPRADESH | 534134 |   1234567890 | abc123@gmail.com |
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com    |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> delete from addressbook where first_name='ram';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from addressbook;
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email         |
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com |
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from addressbook where city='3';
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email         |
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com |
++------------+-----------+--------------+------+---------------+--------+--------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from addressbook where city='2';
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address   | city | state         | zip    | phone_number | email            |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
++------------+-----------+-----------+------+---------------+--------+--------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(city) from addressbook;
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(state) from addressbook;
++--------------+
+| count(state) |
++--------------+
+|            2 |
++--------------+
+1 row in set (0.00 sec)
+=========================UC8 get contact details by order =============================
+mysql> select * from addressbook order by first_name;
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email            |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com    |
+| ram        | nunna     | hyderabad    |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from addressbook order by address;
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email            |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad    |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com    |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from addressbook order by email;
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| first_name | last_name | address      | city | state         | zip    | phone_number | email            |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+| ram        | nunna     | hyderabad    |    2 | ANDHRAPRADESH | 534568 |   1234567890 | abc123@gmail.com |
+| anil       | Teli      | westgodavari |    3 | ANDHRAPRADESH | 532123 |    986778446 | xyz@gmail.com    |
++------------+-----------+--------------+------+---------------+--------+--------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql>
